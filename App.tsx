@@ -1,9 +1,9 @@
 import {
-  FlatList,
   ListRenderItemInfo,
   SafeAreaView,
   StyleSheet,
 } from "react-native";
+import Animated, { Layout, Transition } from "react-native-reanimated";
 import { getData, ListItemType } from "./src/getData";
 import { ListItem } from "./src/ListItem";
 
@@ -15,7 +15,8 @@ export default function App() {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
+      <Animated.FlatList
+        itemLayoutAnimation={Layout.springify()}
         data={data}
         keyExtractor={(item, index) => `${item.title}${index}`}
         renderItem={renderItem}
